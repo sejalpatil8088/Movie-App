@@ -31,7 +31,7 @@ const MovieDetails = ({ currentUser }) => {
         alert('Movie already in watchlist');
         return;
       }
-      const users = JSON.parse(localStorage.getItem('users'));
+      const users = JSON.parse(localStorage.getItem('users')) || [];
       const updatedUser = Object.assign(currentUser, { watchlist: [...currentUser.watchlist, movie] });
       const updatedUsers = users.map((u) => (u.email === currentUser.email ? updatedUser : u));
       localStorage.setItem('users', JSON.stringify(updatedUsers));

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import MovieList from './Components/MovieList';
@@ -11,16 +11,9 @@ import Register from './Components/Register';
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // useEffect(() => {
-  //   const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-  //   setUsers(storedUsers);
-  //   if (storedUsers.length > 0) {
-  //     setCurrentUser(storedUsers[0]); 
-  //   }
-  // }, []);
   
   const handleLogin = (email) => {
-    const users = JSON.parse(localStorage.getItem('users'));
+    const users = JSON.parse(localStorage.getItem('users')) || [];
     const user = users.find((u) => u.email === email);
     if (user) {
       setCurrentUser(user);
@@ -34,7 +27,7 @@ const App = () => {
   };
 
   const handleRegister = (email) => {
-    const users = JSON.parse(localStorage.getItem('users'));
+    const users = JSON.parse(localStorage.getItem('users')) || [];
     if (users.find((u) => u.email === email)) {
       alert('User already exists');
       return;
@@ -47,7 +40,7 @@ const App = () => {
 
   const removeFromWatchlist = (movieId) => {
     if (currentUser) {
-      const users = JSON.parse(localStorage.getItem('users'));
+      const users = JSON.parse(localStorage.getItem('users')) || [];
       const updatedWatchlist = currentUser.watchlist.filter(movie => movie.imdbID !== movieId);
       const updatedUser = Object.assign(currentUser, { watchlist: updatedWatchlist });
       const updatedUsers = users.map((u) => (u.email === currentUser.email ? updatedUser : u));
