@@ -9,7 +9,7 @@ const MovieDetails = ({ currentUser }) => {
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=7c2b319f`);
+      const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=7c2b319f`);
       const data = await response.json();
       console.log(data);
       
@@ -56,7 +56,7 @@ const MovieDetails = ({ currentUser }) => {
         <p>Year: {movie.Year}</p>
         <p>Director: {movie.Director}</p>
         <p>Actors: {movie.Actors}</p>
-        <p>Plot: {movie.Plot}</p>
+        <p className='paragrap'>Plot: {movie.Plot}</p>
         <button className="add-to-watchlist" onClick={(movie) => addToWatchlist(movie)}>
           Add to Watchlist
         </button>

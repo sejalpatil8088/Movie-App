@@ -11,10 +11,10 @@ const MovieList = ({ currentUser }) => {
       
       
       if (searchTerm.trim() === '') {
-        url = `http://www.omdbapi.com/?s=batman&apikey=7c2b319f`; 
+        url = `https://www.omdbapi.com/?s=batman&apikey=7c2b319f`; 
       } else {
        
-        url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=7c2b319f`;
+        url = `https://www.omdbapi.com/?s=${searchTerm}&apikey=7c2b319f`;
       }
       
       const response = await fetch(url);
